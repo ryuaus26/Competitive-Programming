@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define pb push_back
+
+void solve()
+{
+	int n, m;
+	cin >> n >> m;
+	vector<int> limit(100);
+	int start = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int length, speed;
+		cin >> length >> speed;
+		for (int j = start; j < length + start; j++)
+		{
+			limit[j] = speed;
+		}
+		start += length;
+	}
+	start = 0;
+	vector<int> bessie(100);
+
+	for (int i = 0; i < m; i++)
+	{
+		int length, speed;
+		cin >> length >> speed;
+		for (int j = start; j < length + start; j++)
+		{
+			bessie[j] = speed;
+		}
+		start += length;
+	}
+	int answer = 0;
+	for (int i = 0; i < 100; i++)
+	{
+
+		answer = max(answer, bessie[i] - limit[i]);
+	}
+	cout << answer << endl;
+}
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	solve();
+}
