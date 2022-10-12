@@ -1,0 +1,37 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<cmath>
+#include<unordered_map>
+
+using namespace std;
+
+void solve(){
+    int n;
+    cin >> n;
+    vector<int>v(n);
+    unordered_map<int,int>mp;
+    for(int i = 0;i < n;i++){
+        cin >> v[i];
+        mp[v[i]]++;
+    }
+    int temp = 0;
+    for(auto k : mp){
+        if(k.second > temp){
+        temp = k.second;
+
+        }
+    }
+
+    cout << v.size() - temp << endl;
+    
+
+}
+
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+    }
+}
