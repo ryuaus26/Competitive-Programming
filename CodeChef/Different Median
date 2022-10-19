@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+
+#define ll long long
+
+using namespace std;
+
+
+int n,arr[1001],c,a;
+
+
+void solve() {
+  cin >> n;
+  arr[1]=0;
+  c=0;
+  a=0;
+  for(int i=2;i<=n;++i)
+    if(i%2==0){ arr[i]
+        =--c;
+    }else{
+        
+    arr[i]=++a;
+    }
+  for(int i=1;i<=n;++i)
+    cout << arr[i]-c+1 << ' ';
+    
+  cout << endl;
+}
+
+
+int main() {
+  int t;
+  cin >> t;
+  while(t--) solve();
+  return 0;
+}
