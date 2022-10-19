@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+
+
+
+
+void solve(){
+	int n;
+	cin >> n;
+
+	vector<int>shell_at_location(3);
+	for(int i =0 ;i < 3;i++){
+		shell_at_location[i] = i;
+	}
+	vector<int>counter(3);
+	for(int i = 0 ;i < n;i++){
+		int a, b, g;
+		cin >> a >> b >> g;
+		a --; b --; g --;
+		swap(shell_at_location[a],shell_at_location[b]);
+		counter[shell_at_location[g]]++;
+	}
+	int high1 = max(counter[0],counter[1]);
+	int high2 = max(counter[1],counter[2]);
+	cout << max(high1,high2) << endl;
+
+}
+
+int main(){
+
+	solve();
+
+}
