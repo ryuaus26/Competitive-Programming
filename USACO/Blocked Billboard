@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define vi vector<int>
+#define pb push_back
+
+struct Rect{
+  int x_1,y_1,x_2,y_2;
+  int Area(){
+    return (y_2 - y_1) * (x_2 - x_1);
+  }
+};
+
+int intersect(Rect a, Rect c){
+  int xOverlap = max(0,min(a.x_2,c.x_2)- max(a.x_1,c.x_1));
+  int yOverlap = max(0,min(a.y_2,c.y_2) - max(a.y_1,c.y_1));
+  return xOverlap * yOverlap;
+}
+
+void solve(){
+  Rect a,b,c;
+  cin >> a.x_1 >> a.y_1 >> a.x_2 >> a.y_2;
+  cin >> b.x_1 >> b.y_1 >> b.x_2 >> b.y_2;
+  cin >> c.x_1 >> c.y_1 >> c.x_2 >> c.y_2;
+  
+  cout <<  a.Area() + b.Area() - intersect(a,c) - intersect(b,c) << endl;
+  
+  
+
+} 
+ 
+int main()
+{
+  solve();
+  
+
+ 
+ }
+
+	
