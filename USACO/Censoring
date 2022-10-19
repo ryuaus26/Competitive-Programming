@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define vi vector<int>
+#define pb push_back
+
+
+
+
+
+
+void solve(){
+	string s;
+	cin >> s;
+	string t;
+	cin >> t;
+	
+	string censored;
+	for(int i = 0; i < s.size();i++){
+		censored += s[i];
+		if(censored.size() > t.size() && censored.substr(censored.size() - t.size()) == t){
+			censored.resize(censored.size() - t.size());
+		}
+	}
+	cout << censored << endl;
+}
+ 
+
+
+int main()
+{
+  solve();
+  
+
+ 
+ }
+
+	
