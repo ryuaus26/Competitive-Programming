@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+
+void solve(){
+	freopen("square.in","r",stdin);
+	freopen("square.out","w",stdout);
+  int x_1,y_1,x_2,y_2;
+  cin >> x_1 >> y_1 >> x_2 >> y_2;
+  int x_3,y_3,x_4,y_4;
+  cin >> x_3 >> y_3 >> x_4 >> y_4;
+
+  int length = max(x_2,x_4) - min(x_1,x_3);
+  int width = max(y_2,y_4) - min(y_1,y_3);
+
+  int ans = max(length,width);
+  cout << ans * ans << endl;
+  
+
+} 
+ 
+int main()
+{
+  solve();
+
+
+	
+}
