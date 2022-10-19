@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+#define ll long long
+
+void solve(){
+  int b_i,b_j,r_i,r_j,l_i,l_j;
+  for(int i = 0 ;i < 10;i++){
+    string a;
+    cin >> a;
+    for(int j =0 ;j < 10;j++){
+      if(a[j] == 'B'){
+        b_i = i;
+        b_j = j;
+      }
+      else if(a[j] == 'R'){
+        r_i = i;
+        r_j = j;
+      }else if(a[j] == 'L'){
+        l_i = i;
+        l_j = j;
+      }
+    }
+  }
+
+  int cows = abs(b_i - l_i) + abs(b_j - l_j) - 1;
+
+  if(b_i == r_i && b_i == l_i &&(b_j < r_j && l_j > r_j || l_j < r_j && b_j > r_j)){
+    cows += 2;
+  }else if(b_j == r_j && b_j == l_j &&(b_i < r_i && l_i > r_i || l_i < r_i && b_i > r_i)){
+    cows += 2;
+  }
+  cout << cows << endl;
+
+
+} 
+ 
+int main()
+{
+  solve();
+
+
+	
+}
