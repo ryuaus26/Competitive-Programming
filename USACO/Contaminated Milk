@@ -1,0 +1,78 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<cmath>
+#include<unordered_map>
+
+using namespace std;
+
+#define ar array
+#define ll long long
+#define ld long double
+#define sza(x) ((int)x.size())
+#define all(a) (a).begin(), (a).end()
+
+#define PI 3.1415926535897932384626433832795l 
+const int MAX_N = 1e5 + 5;
+const ll MOD = 1e9 + 7;
+const ll INF = 1e9;
+const ld EPS = 1e-9;
+
+int n,m,d,s;
+int personDrink[1001],milkDrink[1001],timeDrink[1001];
+int personSick[1001],timeSick[1001];
+
+
+bool drankBefore(int person,int milkType,int time){
+    for(int i =1;i <=d;i++){
+        if(personDrink[i] == person && milkDrink[i] == milkType && timeDrink[i] < time) return true;
+    }
+    return false;
+}
+
+bool milkBad(int milkType){
+    for(int i = 1;i <= s;i++){
+        if(!(drankBefore(personSick[i],milkType,timeSick[i]))) return false;
+    }
+    return true;
+}
+
+int countDrink(int milkType){
+    bool didDrink[51] = {0};
+
+    for(int i = 1;i <= d;i++){
+        if(milkDrink[i] == milkType) didDrink[personDrink[i]] = true;
+    }
+    int cnt = 0;
+    for(int i = 1;i <= 50;i++){
+        cnt += didDrink[i]; 
+    }
+    return cnt;
+}
+
+
+
+// Brute force and greedy 
+void solve(){
+  freopen("badmilk.in","r",stdin);
+  freopen("badmilk.out","w",stdout);
+  cin >>  n >> m >> d >> s;
+  for(int i = 1;i <=d;i++){
+    cin >> personDrink[i] >> milkDrink[i] >> timeDrink[i];
+  }
+  for(int i = 1;i <=s;i++){
+    cin >> personSick[i] >> timeSick[i];
+  }
+  int ans = 0;
+
+  for(int i = 1;i <=m;i++){
+   if(milkBad(i)) ans = max(ans,countDrink(i));
+  }
+  cout << ans << "\n";
+
+
+}
+
+int main(){
+    solve();
+}
