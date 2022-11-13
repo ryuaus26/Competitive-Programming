@@ -1,0 +1,49 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<cmath>
+#include<unordered_map>
+#include<bits/stdc++.h>
+
+using namespace std;
+
+void solve(){
+  int n;
+  cin >> n;
+  n *= 2;
+  vector<int>weights(n);
+  for(int i =0 ;i< n;i++){
+    cin >> weights[i];
+  }
+  sort(weights.begin(),weights.end());
+
+  int ans =1e9;
+  for(int i = 0;i < n ;i++){
+    for(int j =i +1;j < n;j++){
+      vector<int>randPeople;
+
+      //Randomly distribute single kayaks
+      
+      for(int k = 0;k < n ;k++){ 
+        if(k != i && k != j){
+          randPeople.push_back(weights[k]);
+        }
+      }
+        int temp = 0;
+        for(int z = 0;z < n- 2;z +=2){
+          temp += randPeople[z + 1] - randPeople[z];
+        }
+
+          ans = min(ans,temp);
+      }
+    }
+  cout << ans << endl;
+  
+  }
+  
+  
+
+int main(){
+    ios_base::sync_with_stdio(0) ; cin.tie(0) ; cout.tie(0) ;
+        solve();
+}
